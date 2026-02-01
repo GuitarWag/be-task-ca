@@ -11,6 +11,25 @@ Please answer the following questions:
 3. What would be your plan to refactor the project to stick to the clean architecture?
 4. How can you make dependencies between modules more explicit?
 
+See [ANSWERS.md](ANSWERS.md) for detailed analysis and refactoring approach.
+
+## Architecture
+
+```
+be_task_ca/
+├── domain/entities/          # Pure business entities (User, Item, CartItem)
+├── ports/repositories/       # Repository interfaces (contracts)
+├── use_cases/               # Application business rules
+│   ├── commands/           # DTOs for use case input
+│   └── exceptions/         # Domain exceptions
+├── adapters/repositories/   # In-memory implementations
+└── drivers/rest/           # FastAPI HTTP layer
+    ├── routers/
+    ├── schemas/
+    ├── dependencies.py     # DI container
+    └── exception_handlers.py
+```
+
 *Please do not spend more than 2-3 hours on this task.*
 
 Stretch goals:
